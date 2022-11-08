@@ -1,18 +1,13 @@
 from math import log,ceil
-a = int(input("Podaj liczbe naturalna: "))
 
+def f(n,p):
+    number = ['0' for _ in range(ceil(log(n,p))+1)]
+    i=-1
+    while n>0:
+        number[i]=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'][n%p]
+        n//=p
+        i-=1
+    return "".join(number)
 
-for i in range(2,17):
-    n=a
-    licznik = -1
-    tab = [0 for _ in range(ceil(log(n,i))+1)]
-    while n!=0:
-        tab[licznik]=n%i
-        licznik -=1
-        n=n//i
-
-    print(f"Podstawa {i}: ",end='')
-    for el in tab:
-        print(el,end='')
-
-    print()
+if __name__=="__main__":
+    print(f(16,2))
