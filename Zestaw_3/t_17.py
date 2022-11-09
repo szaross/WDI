@@ -1,4 +1,4 @@
-from math import sqrt, ceil
+from math import sqrt, ceil,log
 
 def is_prime(a):
     if a==2 or a==3: return True
@@ -15,23 +15,32 @@ def is_prime(a):
 
     return True
 
+def trojkowy(a,n):
+    liczba = [0 for _ in range(n)]
+    licznik =-1
+    while a!=0:
+        liczba[licznik]=a%3
+        a//=3
+        licznik-=1
+    return liczba
 
 
 def f(t1,t2):
-    c1 = [0 for _ in range(len(t1))]
-    c2 = [0 for _ in range(len(t2))]
-
-    for i in range(len(t1)):
-        for j in range(1,3):
-            if j==1:
-                for k in range(1,3):
-                    if k==1:
-                        c1[i]==1
-                    else:
-                        c2[i]==1
-            else:
-                c1[i]==1
-                c2[i]==1
-        
-            
-
+    n=len(t1)
+    licznik=0
+    for k in range(3**n):
+        index=0
+        suma=0
+        while index<n:
+            maska=k%3
+            k//=3
+            if maska==0:
+                suma+=t1[index]+t2[index]
+            elif maska==1:
+                suma+=t1[index]
+            elif maska==2:
+                suma=+t2[index]
+            index +=1
+        if is_prime(suma):
+            licznik+=1
+    return licznik
