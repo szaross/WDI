@@ -1,6 +1,8 @@
 from math import sqrt,ceil
 
 def is_prime(a):
+    if a<2:
+        return False
     if a==2 or a==3:
         return True
     if a%2==0 or a%3==0 or a==0:
@@ -20,6 +22,7 @@ def is_prime(a):
 
 def f(t):
     fib=[0 for _ in range(len(t))]
+    fib[0]=1
     fib[1]=1
 
     pierwsza = False
@@ -35,10 +38,3 @@ def f(t):
                 pierwsza = True
 
     return pierwsza
-                
-
-
-
-    
-
-        
