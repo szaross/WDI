@@ -1,11 +1,18 @@
-n = int(input("Podaj liczbe naturalna: "))
+from math import ceil,sqrt
 
-tab = [i for i in range(0,n+1)]
+def f(n):
+    T=[True for _ in range(n)]
+    T[0]=False
+    T[1]=False
+    num=0
+    for i in range(2,ceil(sqrt(n))):
+        if T[i]:
+            for j in range(i+i,n,i):
+                T[j]=False
+    for i in T:
+        if i:
+            num+=1
+    return num
 
-for x in tab[2:]:
-    for z in range(2*x,n+1,x):
-        tab[z]=0
-
-for i in tab[2:]:
-    if tab[i]!=0:
-        print(tab[i],end=' ')
+if __name__=="__main__":
+    f(100)
