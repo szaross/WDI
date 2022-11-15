@@ -1,10 +1,9 @@
 def rozklad(a):
         czynniki = []
-        while a>1:
-            for i in range(2,a+1):
-                if a%i==0:
-                    czynniki += [i]
-                    a//=i
+        for i in range(2,a+1):
+            while a%i==0:
+                czynniki += [i]
+                a//=i
         return czynniki
 
 def f(T):
@@ -21,3 +20,4 @@ def f(T):
 
 if __name__=="__main__":
     print(f([2,2,3,4,5,7]))
+    print(rozklad(10))
